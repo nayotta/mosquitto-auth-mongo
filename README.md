@@ -41,3 +41,7 @@ topics是用户acl, test/# 表示对test/后面的多级路径均有权限, r表
 ## 客户端测试
 
 手机可使用MQTTool登录
+
+## 日志
+
+docker 日志可以看 AUTHORIZED=1 或者 CACHEDAUTH: 0 表示acl成功
