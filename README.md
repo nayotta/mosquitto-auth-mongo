@@ -26,14 +26,15 @@ db.createCollection('users')
 
 
 创建用户及acl:
-用户密码使用https://github.com/jpmens/mosquitto-auth-plug/tree/master/contrib/golang计算, mosquitto的docker里也有命令行工具, np -p {密码} 计算密码hash
+用户密码使用https://github.com/jpmens/mosquitto-auth-plug/tree/master/contrib/golang 计算, mosquitto的docker里也有命令行工具, np -p {密码} 计算密码hash
 
-db.users.insert({'username':'test', 
-			     'password':'PBKDF2$sha256$901$WXkNjx3foZoK+lxK$dIP5wiPklfyjBzVC4l+I5NyEM/0gBBM7',
-				 'superuser':false,
-				 'topics':
-					{'test/#':'rw'}
-				})
+db.users.insert({
+	'username':'test',
+	'password':'PBKDF2$sha256$901$WXkNjx3foZoK+lxK$dIP5wiPklfyjBzVC4l+I5NyEM/0gBBM7',
+	'superuser':false,
+	'topics':
+		{'test/#':'rw'}
+	})
 				
 topics是用户acl, test/# 表示对test/后面的多级路径均有权限, r表示读取, w表示写入, topics可以多个权限控制, 比如{{'test/#':'r', 'test/cmd/#','rw'}}
 
